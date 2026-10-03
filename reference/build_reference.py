@@ -9,16 +9,17 @@ from reportlab.platypus import (BaseDocTemplate, Frame, KeepTogether, PageBreak,
 
 OUT = "Python_Fluency_Reference.pdf"
 ss = getSampleStyleSheet()
-BODY = ParagraphStyle("b", parent=ss["Normal"], fontName="Helvetica", fontSize=9.5, leading=13)
-H1 = ParagraphStyle("h1", parent=ss["Heading1"], fontSize=17, textColor=colors.HexColor("#1f3a5f"),
+BODY = ParagraphStyle("b", parent=ss["Normal"], fontName="Helvetica", fontSize=9.5, leading=13,
+                    textColor=colors.HexColor("#e3e8f0"))
+H1 = ParagraphStyle("h1", parent=ss["Heading1"], fontSize=17, textColor=colors.HexColor("#8ab4f8"),
                     spaceBefore=4, spaceAfter=6)
-H2 = ParagraphStyle("h2", parent=ss["Heading2"], fontSize=11.5, textColor=colors.HexColor("#2b5d9b"),
+H2 = ParagraphStyle("h2", parent=ss["Heading2"], fontSize=11.5, textColor=colors.HexColor("#6fa8ff"),
                     spaceBefore=8, spaceAfter=3)
-CODE = ParagraphStyle("c", fontName="Courier", fontSize=8.4, leading=10.6, backColor=colors.HexColor("#f3f5f8"),
+CODE = ParagraphStyle("c", fontName="Courier", fontSize=8.4, leading=10.6, backColor=colors.HexColor("#1e2636"), textColor=colors.HexColor("#d7e3f7"),
                       borderPadding=(4, 5, 4, 5), spaceBefore=3, spaceAfter=7, leftIndent=4)
 CELL = ParagraphStyle("cell", parent=BODY, fontSize=8.6, leading=11)
 CELLC = ParagraphStyle("cellc", parent=CELL, fontName="Courier", fontSize=8.2)
-TIP = ParagraphStyle("tip", parent=BODY, backColor=colors.HexColor("#fff6dd"), borderPadding=(5, 6, 5, 6),
+TIP = ParagraphStyle("tip", parent=BODY, backColor=colors.HexColor("#3b3320"), borderPadding=(5, 6, 5, 6),
                      spaceBefore=4, spaceAfter=8)
 
 story = []
@@ -53,11 +54,11 @@ def table(rows, widths, header=True, mono_cols=(0,)):
                                CELLC if (ci in mono_cols and not (header and ri == 0)) else CELL)
                      for ci, c in enumerate(r)])
     t = Table(data, colWidths=[w * inch for w in widths], repeatRows=1 if header else 0)
-    st = [("GRID", (0, 0), (-1, -1), 0.4, colors.HexColor("#c5cdd8")),
+    st = [("GRID", (0, 0), (-1, -1), 0.4, colors.HexColor("#3a4560")),
           ("VALIGN", (0, 0), (-1, -1), "TOP"),
           ("TOPPADDING", (0, 0), (-1, -1), 2.5), ("BOTTOMPADDING", (0, 0), (-1, -1), 2.5)]
     if header:
-        st.append(("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#dfe8f5")))
+        st.append(("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#27344f")))
     t.setStyle(TableStyle(st))
     story.append(t)
     story.append(Spacer(1, 8))
@@ -65,8 +66,10 @@ def table(rows, widths, header=True, mono_cols=(0,)):
 
 def footer(canvas, doc):
     canvas.saveState()
+    canvas.setFillColor(colors.HexColor("#12161f"))
+    canvas.rect(0, 0, letter[0], letter[1], stroke=0, fill=1)
     canvas.setFont("Helvetica", 8)
-    canvas.setFillColor(colors.grey)
+    canvas.setFillColor(colors.HexColor("#7d8799"))
     canvas.drawString(0.7 * inch, 0.45 * inch, "Road to LC King - Python Fluency Reference")
     canvas.drawRightString(letter[0] - 0.7 * inch, 0.45 * inch, f"Page {doc.page}")
     canvas.restoreState()
@@ -76,7 +79,7 @@ def footer(canvas, doc):
 story.append(Spacer(1, 1.2 * inch))
 story.append(Paragraph("Python Fluency Reference", ParagraphStyle("t", parent=H1, fontSize=30, leading=36)))
 story.append(Paragraph("Everything you need to turn an English requirement into working Python",
-                       ParagraphStyle("st", parent=BODY, fontSize=13, leading=18, textColor=colors.HexColor("#555555"))))
+                       ParagraphStyle("st", parent=BODY, fontSize=13, leading=18, textColor=colors.HexColor("#a9b4c8"))))
 story.append(Spacer(1, 0.4 * inch))
 p("This is a <b>reference</b>, not a lesson. Read a section, then close it and write code. "
   "Understanding a page here is worth nothing until you can write the pattern from a blank file. "
