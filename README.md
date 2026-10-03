@@ -9,3 +9,6 @@ Goal: turn an English requirement into working Python, from a blank file.
 
 ## VS Code auto-push
 Open this folder in VS Code (`code .`). The GitDoc extension commits and pushes `.py`/`.md` changes ~10s after you save.
+
+## The book
+`Python_Fluency_Book.pdf` is the one-concept-per-page study book (dark theme). Rebuild with `python3 book/build_book.py` after editing `book/content.py`.
