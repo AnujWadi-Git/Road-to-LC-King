@@ -1,0 +1,10 @@
+{
+  "gitdoc.enabled": true,
+  "gitdoc.autoCommitDelay": 10000,
+  "gitdoc.autoPush": "onCommit",
+  "gitdoc.pullOnOpen": true,
+  "gitdoc.commitMessageFormat": "Update {files} ({date})",
+  "gitdoc.commitValidationLevel": "none",
+  "gitdoc.filePattern": "**/*.py,**/*.md",
+  "python.defaultInterpreterPath": "python3"
+}
