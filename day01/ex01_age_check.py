@@ -5,3 +5,13 @@
 # If they are 18 or older, print: Adult
 # Otherwise, print: Minor
 
+def check_age():
+    age = int(input("Enter your age: "))
+    if age >= 18:
+        print("Adult")
+    else:
+        print("Minor")
+    return age
+
+
+check_age()
