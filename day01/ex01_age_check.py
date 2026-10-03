@@ -6,12 +6,10 @@
 # Otherwise, print: Minor
 
 def check_age():
-    age = int(input("Enter your age: "))
-    if age >= 18:
-        print("Adult")
-    else:
-        print("Minor")
-    return age
+    for age in range:
+        if age <= 18:
+            print('Adult')
+        else:
+            print('minor')
 
-
-check_age()
+    return
