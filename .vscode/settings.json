@@ -6,5 +6,26 @@
   "gitdoc.commitMessageFormat": "Update {files} ({date})",
   "gitdoc.commitValidationLevel": "none",
   "gitdoc.filePattern": "**/*.py,**/*.md",
-  "python.defaultInterpreterPath": "python3"
+  "python.defaultInterpreterPath": "python3",
+  "editor.inlineSuggest.enabled": false,
+  "editor.suggest.preview": false,
+  "editor.quickSuggestions": {
+    "other": false,
+    "comments": false,
+    "strings": false
+  },
+  "editor.suggestOnTriggerCharacters": false,
+  "editor.parameterHints.enabled": false,
+  "editor.acceptSuggestionOnEnter": "off",
+  "github.copilot.enable": {
+    "*": false
+  },
+  "github.copilot.editor.enableAutoCompletions": false,
+  "github.copilot.nextEditSuggestions.enabled": false,
+  "python.analysis.autoImportCompletions": false,
+  "continue.enableTabAutocomplete": false,
+  "codeium.enableCodeLens": false,
+  "codeium.enableConfig": {
+    "*": false
+  }
 }
